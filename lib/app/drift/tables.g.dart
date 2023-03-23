@@ -67,7 +67,7 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, Task> {
   @override
   Task map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Task.fromDB(
+    return Task(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
@@ -81,6 +81,73 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, Task> {
   $TasksTable createAlias(String alias) {
     return $TasksTable(attachedDatabase, alias);
   }
+}
+
+class Task extends DataClass implements Insertable<Task> {
+  final int id;
+  final String name;
+  final bool isDone;
+  const Task({required this.id, required this.name, required this.isDone});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['name'] = Variable<String>(name);
+    map['is_done'] = Variable<bool>(isDone);
+    return map;
+  }
+
+  TasksCompanion toCompanion(bool nullToAbsent) {
+    return TasksCompanion(
+      id: Value(id),
+      name: Value(name),
+      isDone: Value(isDone),
+    );
+  }
+
+  factory Task.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Task(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+      isDone: serializer.fromJson<bool>(json['isDone']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String>(name),
+      'isDone': serializer.toJson<bool>(isDone),
+    };
+  }
+
+  Task copyWith({int? id, String? name, bool? isDone}) => Task(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        isDone: isDone ?? this.isDone,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('Task(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('isDone: $isDone')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, name, isDone);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Task &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.isDone == this.isDone);
 }
 
 class TasksCompanion extends UpdateCompanion<Task> {
@@ -142,27 +209,6 @@ class TasksCompanion extends UpdateCompanion<Task> {
           ..write('isDone: $isDone')
           ..write(')'))
         .toString();
-  }
-}
-
-class _$TaskInsertable implements Insertable<Task> {
-  Task _object;
-
-  _$TaskInsertable(this._object);
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    return TasksCompanion(
-      id: Value(_object.id),
-      name: Value(_object.name),
-      isDone: Value(_object.isDone),
-    ).toColumns(false);
-  }
-}
-
-extension TaskToInsertable on Task {
-  _$TaskInsertable toInsertable() {
-    return _$TaskInsertable(this);
   }
 }
 

@@ -829,10 +829,10 @@ class __$$DeleteCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = null,
+    Object? task = freezed,
   }) {
     return _then(_$Delete(
-      null == task
+      freezed == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
@@ -858,11 +858,12 @@ class _$Delete implements Delete {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Delete &&
-            (identical(other.task, task) || other.task == task));
+            const DeepCollectionEquality().equals(other.task, task));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, task);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
 
   @JsonKey(ignore: true)
   @override
@@ -980,10 +981,10 @@ class __$$SwitchCheckCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? task = null,
+    Object? task = freezed,
   }) {
     return _then(_$SwitchCheck(
-      null == task
+      freezed == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
               as Task,
@@ -1009,11 +1010,12 @@ class _$SwitchCheck implements SwitchCheck {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SwitchCheck &&
-            (identical(other.task, task) || other.task == task));
+            const DeepCollectionEquality().equals(other.task, task));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, task);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(task));
 
   @JsonKey(ignore: true)
   @override

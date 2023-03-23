@@ -101,7 +101,7 @@ class TaskCreationRouteArgs {
 class TaskOptionsRoute extends PageRouteInfo<TaskOptionsRouteArgs> {
   TaskOptionsRoute({
     Key? key,
-    required Task task,
+    required dynamic task,
     required TasksListBloc bloc,
     List<PageRouteInfo>? children,
   }) : super(
@@ -129,7 +129,7 @@ class TaskOptionsRouteArgs {
 
   final Key? key;
 
-  final Task task;
+  final dynamic task;
 
   final TasksListBloc bloc;
 

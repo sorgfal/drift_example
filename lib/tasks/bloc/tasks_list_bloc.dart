@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:drift_example/app/drift/tables.dart';
+import 'package:drift_example/tasks/data/tasks_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'tasks_list_bloc.freezed.dart';
 
 class TasksListBloc extends Bloc<TasksListEvent, TasksListState> {
-  final TasksDatabase tasksDatabase;
+  final TasksRepository tasksDatabase;
 
   StreamSubscription? tasksSubscription;
 
