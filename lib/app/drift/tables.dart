@@ -8,7 +8,7 @@ import 'package:path/path.dart' as p;
 
 part 'tables.g.dart';
 
-@UseRowClass(Task, constructor: 'fromDB')
+@UseRowClass(Task, constructor: 'fromDB', generateInsertable: true)
 class Tasks extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get name => text()();
@@ -19,7 +19,7 @@ class Task {
   final int id;
   final String name;
   final bool isDone;
-
+  const Task(this.id, this.name, this.isDone);
   Task.fromDB({
     required this.id,
     required this.name,
@@ -37,9 +37,21 @@ LazyDatabase _openConnection() {
 }
 
 @DriftDatabase(tables: [Tasks])
-class TodoDatabase extends _$TodoDatabase {
-  TodoDatabase() : super(_openConnection());
+class TasksDatabase extends _$TasksDatabase {
+  TasksDatabase() : super(_openConnection());
 
   @override
   int get schemaVersion => 1;
+
+  Future<void> addTask({required String title}) async {
+    await into(tasks).insert(TasksCompanion.insert(name: title, isDone: false));
+  }
+
+  Stream<List<Task>> watchCurrentTasks() {
+    return select(tasks).watch();
+  }
+
+  Future<List<Task>> getTasks() {
+    return select(tasks).get();
+  }
 }

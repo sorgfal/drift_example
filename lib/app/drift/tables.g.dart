@@ -145,8 +145,29 @@ class TasksCompanion extends UpdateCompanion<Task> {
   }
 }
 
-abstract class _$TodoDatabase extends GeneratedDatabase {
-  _$TodoDatabase(QueryExecutor e) : super(e);
+class _$TaskInsertable implements Insertable<Task> {
+  Task _object;
+
+  _$TaskInsertable(this._object);
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    return TasksCompanion(
+      id: Value(_object.id),
+      name: Value(_object.name),
+      isDone: Value(_object.isDone),
+    ).toColumns(false);
+  }
+}
+
+extension TaskToInsertable on Task {
+  _$TaskInsertable toInsertable() {
+    return _$TaskInsertable(this);
+  }
+}
+
+abstract class _$TasksDatabase extends GeneratedDatabase {
+  _$TasksDatabase(QueryExecutor e) : super(e);
   late final $TasksTable tasks = $TasksTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
