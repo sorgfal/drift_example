@@ -16,9 +16,12 @@ class HomeScreen extends StatelessWidget {
         create: (context) => TasksListBloc(context.read<TasksDatabase>())
           ..add(TasksListEvent.init()),
         child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => context.pushRoute(TaskCreationRoute()),
-          ),
+          floatingActionButton: Builder(builder: (context) {
+            return FloatingActionButton(
+              onPressed: () => context.pushRoute(
+                  TaskCreationRoute(bloc: context.read<TasksListBloc>())),
+            );
+          }),
           body: TasksListView(),
         ));
   }

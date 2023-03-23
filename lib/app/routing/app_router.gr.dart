@@ -21,9 +21,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     TaskCreationRoute.name: (routeData) {
+      final args = routeData.argsAs<TaskCreationRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TaskCreationSheet(),
+        child: TaskCreationSheet(
+          key: args.key,
+          bloc: args.bloc,
+        ),
       );
     },
   };
@@ -45,14 +49,38 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TaskCreationSheet]
-class TaskCreationRoute extends PageRouteInfo<void> {
-  const TaskCreationRoute({List<PageRouteInfo>? children})
-      : super(
+class TaskCreationRoute extends PageRouteInfo<TaskCreationRouteArgs> {
+  TaskCreationRoute({
+    Key? key,
+    required TasksListBloc bloc,
+    List<PageRouteInfo>? children,
+  }) : super(
           TaskCreationRoute.name,
+          args: TaskCreationRouteArgs(
+            key: key,
+            bloc: bloc,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'TaskCreationRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<TaskCreationRouteArgs> page =
+      PageInfo<TaskCreationRouteArgs>(name);
+}
+
+class TaskCreationRouteArgs {
+  const TaskCreationRouteArgs({
+    this.key,
+    required this.bloc,
+  });
+
+  final Key? key;
+
+  final TasksListBloc bloc;
+
+  @override
+  String toString() {
+    return 'TaskCreationRouteArgs{key: $key, bloc: $bloc}';
+  }
 }

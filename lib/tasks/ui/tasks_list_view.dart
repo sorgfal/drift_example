@@ -47,6 +47,15 @@ class TasksListViewLoaded extends StatelessWidget {
       itemCount: tasks.length,
       itemBuilder: (context, index) => ListTile(
         title: Text(tasks[index].name),
+        trailing: IconButton(
+            onPressed: () {
+              context
+                  .read<TasksListBloc>()
+                  .add(TasksListEvent.switchCheck(tasks[index]));
+            },
+            icon: Icon(tasks[index].isDone
+                ? Icons.check_box_outlined
+                : Icons.check_box_outline_blank)),
       ),
     );
   }

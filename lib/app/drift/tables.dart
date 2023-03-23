@@ -47,6 +47,12 @@ class TasksDatabase extends _$TasksDatabase {
     await into(tasks).insert(TasksCompanion.insert(name: title, isDone: false));
   }
 
+  Future<void> updateCheck(
+      {required int taskId, required bool isChecked}) async {
+    await (update(tasks)..where((tbl) => tbl.id.equals(taskId)))
+        .write(TasksCompanion(isDone: Value(isChecked)));
+  }
+
   Stream<List<Task>> watchCurrentTasks() {
     return select(tasks).watch();
   }

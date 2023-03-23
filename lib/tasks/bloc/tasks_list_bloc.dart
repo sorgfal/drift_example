@@ -22,6 +22,13 @@ class TasksListBloc extends Bloc<TasksListEvent, TasksListState> {
     on<Updated>((event, emit) {
       emit(Loaded(event.tasks));
     });
+    on<Create>((event, emit) {
+      tasksDatabase.addTask(title: event.title);
+    });
+    on<SwitchCheck>((event, emit) async {
+      await tasksDatabase.updateCheck(
+          taskId: event.task.id, isChecked: !event.task.isDone);
+    });
   }
   @override
   Future<void> close() async {
@@ -40,4 +47,9 @@ class TasksListState with _$TasksListState {
 class TasksListEvent with _$TasksListEvent {
   const factory TasksListEvent.init() = Init;
   const factory TasksListEvent.updated(List<Task> tasks) = Updated;
+  const factory TasksListEvent.create(String title) = Create;
+  const factory TasksListEvent.delete(Task task) = Delete;
+  const factory TasksListEvent.switchCheck(
+    Task task,
+  ) = SwitchCheck;
 }
