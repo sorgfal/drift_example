@@ -21,6 +21,7 @@ class CustomSheetDialog extends StatelessWidget {
               padding: insetPadding ??
                   const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: children,
               ),
             )
