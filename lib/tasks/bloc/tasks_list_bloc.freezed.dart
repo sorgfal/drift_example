@@ -316,7 +316,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
@@ -325,7 +325,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
@@ -334,7 +334,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
@@ -344,7 +344,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
@@ -353,7 +353,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
@@ -362,7 +362,7 @@ mixin _$TasksListEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,
@@ -426,7 +426,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
@@ -438,7 +438,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
@@ -450,7 +450,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
@@ -466,7 +466,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
@@ -478,7 +478,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
@@ -490,7 +490,7 @@ class _$Init implements Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,
@@ -508,18 +508,18 @@ abstract class Init implements TasksListEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdatedCopyWith<$Res> {
-  factory _$$UpdatedCopyWith(_$Updated value, $Res Function(_$Updated) then) =
-      __$$UpdatedCopyWithImpl<$Res>;
+abstract class _$$UpdateCopyWith<$Res> {
+  factory _$$UpdateCopyWith(_$Update value, $Res Function(_$Update) then) =
+      __$$UpdateCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Task> tasks});
 }
 
 /// @nodoc
-class __$$UpdatedCopyWithImpl<$Res>
-    extends _$TasksListEventCopyWithImpl<$Res, _$Updated>
-    implements _$$UpdatedCopyWith<$Res> {
-  __$$UpdatedCopyWithImpl(_$Updated _value, $Res Function(_$Updated) _then)
+class __$$UpdateCopyWithImpl<$Res>
+    extends _$TasksListEventCopyWithImpl<$Res, _$Update>
+    implements _$$UpdateCopyWith<$Res> {
+  __$$UpdateCopyWithImpl(_$Update _value, $Res Function(_$Update) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -527,7 +527,7 @@ class __$$UpdatedCopyWithImpl<$Res>
   $Res call({
     Object? tasks = null,
   }) {
-    return _then(_$Updated(
+    return _then(_$Update(
       null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -538,8 +538,8 @@ class __$$UpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Updated implements Updated {
-  const _$Updated(final List<Task> tasks) : _tasks = tasks;
+class _$Update implements Update {
+  const _$Update(final List<Task> tasks) : _tasks = tasks;
 
   final List<Task> _tasks;
   @override
@@ -551,14 +551,14 @@ class _$Updated implements Updated {
 
   @override
   String toString() {
-    return 'TasksListEvent.updated(tasks: $tasks)';
+    return 'TasksListEvent.update(tasks: $tasks)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Updated &&
+            other is _$Update &&
             const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
@@ -569,45 +569,45 @@ class _$Updated implements Updated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdatedCopyWith<_$Updated> get copyWith =>
-      __$$UpdatedCopyWithImpl<_$Updated>(this, _$identity);
+  _$$UpdateCopyWith<_$Update> get copyWith =>
+      __$$UpdateCopyWithImpl<_$Update>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
   }) {
-    return updated(tasks);
+    return update(tasks);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
   }) {
-    return updated?.call(tasks);
+    return update?.call(tasks);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
     required TResult orElse(),
   }) {
-    if (updated != null) {
-      return updated(tasks);
+    if (update != null) {
+      return update(tasks);
     }
     return orElse();
   }
@@ -616,49 +616,49 @@ class _$Updated implements Updated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
   }) {
-    return updated(this);
+    return update(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
   }) {
-    return updated?.call(this);
+    return update?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,
     required TResult orElse(),
   }) {
-    if (updated != null) {
-      return updated(this);
+    if (update != null) {
+      return update(this);
     }
     return orElse();
   }
 }
 
-abstract class Updated implements TasksListEvent {
-  const factory Updated(final List<Task> tasks) = _$Updated;
+abstract class Update implements TasksListEvent {
+  const factory Update(final List<Task> tasks) = _$Update;
 
   List<Task> get tasks;
   @JsonKey(ignore: true)
-  _$$UpdatedCopyWith<_$Updated> get copyWith =>
+  _$$UpdateCopyWith<_$Update> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -725,7 +725,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
@@ -737,7 +737,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
@@ -749,7 +749,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
@@ -765,7 +765,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
@@ -777,7 +777,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
@@ -789,7 +789,7 @@ class _$Create implements Create {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,
@@ -874,7 +874,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
@@ -886,7 +886,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
@@ -898,7 +898,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
@@ -914,7 +914,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
@@ -926,7 +926,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
@@ -938,7 +938,7 @@ class _$Delete implements Delete {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,
@@ -1025,7 +1025,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(List<Task> tasks) updated,
+    required TResult Function(List<Task> tasks) update,
     required TResult Function(String title) create,
     required TResult Function(Task task) delete,
     required TResult Function(Task task) switchCheck,
@@ -1037,7 +1037,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(List<Task> tasks)? updated,
+    TResult? Function(List<Task> tasks)? update,
     TResult? Function(String title)? create,
     TResult? Function(Task task)? delete,
     TResult? Function(Task task)? switchCheck,
@@ -1049,7 +1049,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(List<Task> tasks)? updated,
+    TResult Function(List<Task> tasks)? update,
     TResult Function(String title)? create,
     TResult Function(Task task)? delete,
     TResult Function(Task task)? switchCheck,
@@ -1065,7 +1065,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
-    required TResult Function(Updated value) updated,
+    required TResult Function(Update value) update,
     required TResult Function(Create value) create,
     required TResult Function(Delete value) delete,
     required TResult Function(SwitchCheck value) switchCheck,
@@ -1077,7 +1077,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
-    TResult? Function(Updated value)? updated,
+    TResult? Function(Update value)? update,
     TResult? Function(Create value)? create,
     TResult? Function(Delete value)? delete,
     TResult? Function(SwitchCheck value)? switchCheck,
@@ -1089,7 +1089,7 @@ class _$SwitchCheck implements SwitchCheck {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
-    TResult Function(Updated value)? updated,
+    TResult Function(Update value)? update,
     TResult Function(Create value)? create,
     TResult Function(Delete value)? delete,
     TResult Function(SwitchCheck value)? switchCheck,

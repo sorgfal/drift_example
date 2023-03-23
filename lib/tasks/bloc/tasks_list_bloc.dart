@@ -16,10 +16,10 @@ class TasksListBloc extends Bloc<TasksListEvent, TasksListState> {
       emit(Loaded(tasks));
 
       tasksSubscription = tasksDatabase.watchCurrentTasks().listen((tasks) {
-        add(Updated(tasks));
+        add(Update(tasks));
       });
     });
-    on<Updated>((event, emit) {
+    on<Update>((event, emit) {
       emit(Loaded(event.tasks));
     });
     on<Create>((event, emit) {
@@ -49,7 +49,7 @@ class TasksListState with _$TasksListState {
 @freezed
 class TasksListEvent with _$TasksListEvent {
   const factory TasksListEvent.init() = Init;
-  const factory TasksListEvent.updated(List<Task> tasks) = Updated;
+  const factory TasksListEvent.update(List<Task> tasks) = Update;
   const factory TasksListEvent.create(String title) = Create;
   const factory TasksListEvent.delete(Task task) = Delete;
   const factory TasksListEvent.switchCheck(
