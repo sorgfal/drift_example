@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'task_item_tile.dart';
+
 class TasksListView extends StatelessWidget {
   const TasksListView({super.key});
 
@@ -12,10 +14,10 @@ class TasksListView extends StatelessWidget {
     return BlocBuilder<TasksListBloc, TasksListState>(
       builder: (context, state) {
         return state.map(loading: (state) {
-          return TasksListViewLoading();
+          return const TasksListViewLoading();
         }, loaded: (state) {
           if (state.tasks.isEmpty) {
-            return TasksListViewEmptyPlaceholder();
+            return const TasksListViewEmptyPlaceholder();
           }
           return TasksListViewLoaded(
             tasks: state.tasks,
@@ -45,18 +47,7 @@ class TasksListViewLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: tasks.length,
-      itemBuilder: (context, index) => ListTile(
-        title: Text(tasks[index].name),
-        trailing: IconButton(
-            onPressed: () {
-              context
-                  .read<TasksListBloc>()
-                  .add(TasksListEvent.switchCheck(tasks[index]));
-            },
-            icon: Icon(tasks[index].isDone
-                ? Icons.check_box_outlined
-                : Icons.check_box_outline_blank)),
-      ),
+      itemBuilder: (context, index) => TaskItemTile(task: tasks[index]),
     );
   }
 }
@@ -66,7 +57,7 @@ class TasksListViewEmptyPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Нет задач'),
     );
   }

@@ -10,7 +10,7 @@ class TasksListBloc extends Bloc<TasksListEvent, TasksListState> {
 
   StreamSubscription? tasksSubscription;
 
-  TasksListBloc(this.tasksDatabase) : super(Loading()) {
+  TasksListBloc(this.tasksDatabase) : super(const Loading()) {
     on<Init>((event, emit) async {
       var tasks = await tasksDatabase.getTasks();
       emit(Loaded(tasks));
@@ -24,6 +24,9 @@ class TasksListBloc extends Bloc<TasksListEvent, TasksListState> {
     });
     on<Create>((event, emit) {
       tasksDatabase.addTask(title: event.title);
+    });
+    on<Delete>((event, emit) async {
+      await tasksDatabase.deleteTask(event.task.id);
     });
     on<SwitchCheck>((event, emit) async {
       await tasksDatabase.updateCheck(

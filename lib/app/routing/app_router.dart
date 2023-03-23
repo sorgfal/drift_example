@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:drift_example/app/drift/tables.dart';
 import 'package:drift_example/app/routing/dialog_route.dart';
 import 'package:drift_example/app/ui/screens/home_screen.dart';
 import 'package:drift_example/tasks/bloc/tasks_list_bloc.dart';
 import 'package:drift_example/tasks/ui/task_creation_sheet.dart';
+import 'package:drift_example/tasks/ui/task_option_sheet.dart';
 import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
@@ -15,6 +17,10 @@ class AppRouter extends _$AppRouter {
     DialogModalRoute(
       page: TaskCreationRoute.page,
       path: '/tasks/create',
+    ),
+    DialogModalRoute(
+      page: TaskOptionsRoute.page,
+      path: '/task/options',
     ),
   ];
 }

@@ -47,6 +47,10 @@ class TasksDatabase extends _$TasksDatabase {
     await into(tasks).insert(TasksCompanion.insert(name: title, isDone: false));
   }
 
+  Future<void> deleteTask(int taskId) async {
+    await (delete(tasks)..where((tbl) => tbl.id.equals(taskId))).go();
+  }
+
   Future<void> updateCheck(
       {required int taskId, required bool isChecked}) async {
     await (update(tasks)..where((tbl) => tbl.id.equals(taskId)))

@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => TasksListBloc(context.read<TasksDatabase>())
-          ..add(TasksListEvent.init()),
+          ..add(const TasksListEvent.init()),
         child: Scaffold(
           floatingActionButton: Builder(builder: (context) {
             return FloatingActionButton(
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                   TaskCreationRoute(bloc: context.read<TasksListBloc>())),
             );
           }),
-          body: TasksListView(),
+          body: const TasksListView(),
         ));
   }
 }
